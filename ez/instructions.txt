@@ -1,0 +1,16 @@
+These scripts allow to start easyTravel using docker images on kubernetes. This setup includes:
+- frontend
+- backend
+- database - mogodb
+- traffic generator - loadgen
+
+Prerequisites:
+1. Kubernetes cluster.
+2. Machine with the tool "kubectl" installed - https://kubernetes.io/docs/tasks/tools/install-kubectl/
+
+Instructions:
+1. The first script to run should be "./setup.sh". This script tries to configure a connection to a kubernetes cluster. In our situation we had to connect to a specific cluster with a specific user and namespace. In your case you might not need to do this at all. Either modify the script or make sure, that the place where you run the scripts have the connection to kubernetes configured correctly and the "kubectl" tool works properly there.
+2. Modify the value "http://SERVER-NAME:30683" in the file "loadgen.yml" to use a correct server name.
+3. Start the configuration with the "./create.sh" script. It will create all the containers needed and expose the services.
+4. Once finished you can remove the configuration with "./delete.sh" script.
+5. If you need to recreate the configuration because of some problems, first run the "./delete.sh" script, wait for 2-3 minutes and run "./create.sh" script.
