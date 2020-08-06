@@ -7,7 +7,7 @@ validate_deployment_argument $DEPLOYMENT
 
 clear
 RESOURCE_PREFIX=$(cat creds.json | jq -r '.resourcePrefix')
-CLUSTER_NAME="$RESOURCE_PREFIX"-dt-kube-demo-cluster
+CLUSTER_NAME="$RESOURCE_PREFIX"-cluster
 
 case $DEPLOYMENT in
   eks)

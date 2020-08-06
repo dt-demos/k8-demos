@@ -4,7 +4,7 @@
 CLUSTER_REGION=$(cat creds.json | jq -r '.clusterRegion')
 RESOURCE_PREFIX=$(cat creds.json | jq -r '.resourcePrefix')
 # derived values
-CLUSTER_NAME="$RESOURCE_PREFIX"-dt-kube-demo-cluster
+CLUSTER_NAME="$RESOURCE_PREFIX"-cluster
 
 echo "===================================================="
 echo "About to provision AWS Resources. "
