@@ -67,7 +67,7 @@ echo "==================================================================="
 
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    echo "Making a backup $CREDS to $CREDS.bak"
+    echo "Making a backup file: $CREDS.bak"
     cp $CREDS $CREDS.bak 2> /dev/null
     rm $CREDS 2> /dev/null
 
@@ -87,6 +87,6 @@ then
         ;;
     esac
     echo ""
-    echo "The updated credentials file can be found here: $CREDS"
+    echo "Making credentials file: $CREDS"
     echo ""
 fi
