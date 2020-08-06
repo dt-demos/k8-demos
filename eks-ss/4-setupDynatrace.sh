@@ -14,7 +14,7 @@ fi
 
 echo " "
 echo "===================================================="
-echo "About to setup demo app infrastructure"
+echo "About to setup Dynatrace"
 read -rsp $'Press ctrl-c to abort. Press any key to continue...\n====================================================' -n1 key
 
 START_TIME=$(date)
@@ -30,10 +30,10 @@ echo "Letting Dynatrace tagging rules be applied [150 seconds] ..."
 sleep 150
 
 echo "===================================================="
-echo "Finished setting up demo app infrastructure "
+echo "Finished setting up Dynatrace "
 echo "===================================================="
 echo "Script start time : "$START_TIME
 echo "Script end time   : "$(date)
-
 echo ""
+echo "Dynatrace URL: https://$(cat creds.json | jq -r '.dynatraceHostName')"
 echo ""
