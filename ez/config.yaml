@@ -16,7 +16,6 @@ spec:
   strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: easytravel-mongodb
     spec:
@@ -64,7 +63,6 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        io.kompose.service: easytravel-backend
         app: easytravel-backend
     spec:
       containers:
@@ -125,7 +123,7 @@ spec:
     nodePort: 30687
   selector:
     app: easytravel-backend
-  type: NodePort
+  type: LoadBalancer
 status:
   loadBalancer: {}
 ---
