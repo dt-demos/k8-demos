@@ -1,0 +1,6 @@
+.project
+.DS_Store
+dynatrace-k8s/
+creds.json*
+logs/*.log
+notes

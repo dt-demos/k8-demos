@@ -1,0 +1,9 @@
+{
+    "deployment": "DEPLOYMENT_PLACEHOLDER",
+    "dynatraceTenant": "DYNATRACE_TENANT_PLACEHOLDER",
+    "dynatraceApiToken": "DYNATRACE_API_TOKEN_PLACEHOLDER",
+    "dynatracePaaSToken": "DYNATRACE_PAAS_TOKEN_PLACEHOLDER",
+    "dynatraceHostName": "DYNATRACE_HOSTNAME_PLACEHOLDER",
+    "resourcePrefix": "RESOURCE_PREFIX_PLACEHOLDER",
+    "clusterRegion": "CLUSTER_REGION_PLACEHOLDER"
+}
