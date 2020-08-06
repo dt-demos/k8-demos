@@ -84,6 +84,12 @@ spec:
           value: -Dconfig.apmServerDefault=APM -Djava.security.egd=file:/dev/./urandom
         - name: ET_DATABASE_LOCATION
           value: easytravel-mongodb:27017
+        - name: ET_MONGO_AUTH_DB
+          value: "admin"
+        - name: ET_DATABASE_USER
+          value: "etAdmin"
+        - name: ET_DATABASE_PASSWORD
+          value: "adminadmin"
         image: dynatrace/easytravel-backend:latest
         imagePullPolicy: "Always"
         name: easytravel-backend
