@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: easytravel-loadgen
+  namespace: easytravel
 spec:
   replicas: 1
   selector:
@@ -28,19 +29,3 @@ spec:
         resources: {}
       restartPolicy: Always
 status: {}
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: easytravel-loadgen-rest
-  namespace: easytravel
-spec:
-  ports:
-  - name: "8091"
-    port: 8091
-    targetPort: 8091
-  selector:
-    app: easytravel-loadgen
-  type: LoadBalancer
-status:
-  loadBalancer: {}
