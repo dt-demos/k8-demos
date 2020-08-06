@@ -1,12 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert
-    kompose.version: 1.13.0 (84fa826)
   creationTimestamp: null
-  labels:
-    io.kompose.service: easytravel-mongodb
   name: easytravel-mongodb
 spec:
   replicas: 1
@@ -18,7 +13,6 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        io.kompose.service: easytravel-mongodb
         app: easytravel-mongodb
     spec:
       containers:
@@ -35,12 +29,6 @@ status: {}
 apiVersion: v1
 kind: Service
 metadata:
-  annotations:
-    kompose.cmd: kompose convert
-    kompose.version: 1.13.0 (84fa826)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: easytravel-mongodb
   name: easytravel-mongodb
 spec:
   ports:
@@ -51,19 +39,13 @@ spec:
     port: 28017
     targetPort: 28017
   selector:
-    io.kompose.service: easytravel-mongodb
+    app: easytravel-mongodb
 status:
   loadBalancer: {}
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert
-    kompose.version: 1.13.0 (84fa826)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: easytravel-backend
   name: easytravel-backend
 spec:
   replicas: 1
@@ -126,12 +108,6 @@ status: {}
 apiVersion: v1
 kind: Service
 metadata:
-  annotations:
-    kompose.cmd: kompose convert
-    kompose.version: 1.13.0 (84fa826)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: easytravel-backend
   name: easytravel-backend
 spec:
   ports:
@@ -140,7 +116,7 @@ spec:
     targetPort: 8080
     nodePort: 30687
   selector:
-    io.kompose.service: easytravel-backend
+    app: easytravel-backend
   type: NodePort
 status:
   loadBalancer: {}
@@ -148,12 +124,6 @@ status:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert
-    kompose.version: 1.13.0 (84fa826)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: easytravel-frontend
   name: easytravel-frontend
 spec:
   replicas: 1
@@ -165,7 +135,6 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        io.kompose.service: easytravel-frontend
         app: easytravel-frontend
     spec:
       containers:
@@ -205,21 +174,15 @@ status: {}
 apiVersion: v1
 kind: Service
 metadata:
-  annotations:
-    kompose.cmd: kompose convert
-    kompose.version: 1.13.0 (84fa826)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: easytravel-frontend
   name: easytravel-frontend
 spec:
   ports:
   - name: "8080"
-    port: 8081
+    port: 8080
     targetPort: 8080
     nodePort: 30683
   selector:
-    io.kompose.service: easytravel-frontend
+    app: easytravel-frontend
   type: LoadBalancer
 status:
   loadBalancer: {}

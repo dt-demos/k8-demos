@@ -1,28 +1,25 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert
-    kompose.version: 1.13.0 (84fa826)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: loadgen
   name: loadgen
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: loadgen
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        io.kompose.service: loadgen
+        app: loadgen
     spec:
       containers:
       - env:
         - name: ET_APM_SERVER_DEFAULT
           value: APM
         - name: ET_FRONTEND_URL
-          value: http://SERVER-NAME:30683
+          value: http://easytravel-frontend:8080
         - name: ET_PROBLEMS
           value: BadCacheSynchronization,CPULoad,DatabaseCleanup,DatabaseSlowdown,FetchSizeTooSmall,JourneySearchError404,JourneySearchError500,LoginProblems,MobileErrors,TravellersOptionBox
         image: dynatrace/easytravel-loadgen:latest
