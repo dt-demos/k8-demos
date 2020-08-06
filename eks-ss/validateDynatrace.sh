@@ -26,7 +26,7 @@ fi
 
 echo ""
 echo "----------------------------------------------------------"
-echo Validating Dynatrace PaaS token is configured properly ...
+echo Validating Dynatrace PaaS token is configured properly 
 echo "----------------------------------------------------------"
 DT_URL="https://$DYNATRACE_HOSTNAME/api/v1/time?Api-Token=$DYNATRACE_PAAS_TOKEN"
 if [ "$(curl -sL -w '%{http_code}' $DT_URL -o /dev/null)" != "200" ]
@@ -39,7 +39,7 @@ fi
 echo "Able to connect using Dynatrace PaaS token."
 echo ""
 echo "----------------------------------------------------------"
-echo Validating Dynatrace API token is configured properly ...
+echo Validating Dynatrace API token is configured properly 
 echo "----------------------------------------------------------"
 DT_URL="https://$DYNATRACE_HOSTNAME/api/config/v1/autoTags?Api-Token=$DYNATRACE_API_TOKEN"
 if [ "$(curl -sL -w '%{http_code}' $DT_URL -o /dev/null)" != "200" ]
