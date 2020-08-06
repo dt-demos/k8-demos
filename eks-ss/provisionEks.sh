@@ -23,4 +23,6 @@ eksctl create cluster --version=1.17 --name=$CLUSTER_NAME --node-type=m5.2xlarge
 echo "------------------------------------------------------"
 echo "Getting Cluster Credentials"
 echo "------------------------------------------------------"
-eksctl utils write-kubeconfig --name=$CLUSTER_NAME --region=$CLUSTER_REGION --set-kubeconfig-context
+eksctl utils write-kubeconfig --cluster=$CLUSTER_NAME --region=$CLUSTER_REGION --set-kubeconfig-context
+
+aws eks update-kubeconfig --name $CLUSTER_NAME --region $CLUSTER_REGION
