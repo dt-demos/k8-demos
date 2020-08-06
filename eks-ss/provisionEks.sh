@@ -18,8 +18,7 @@ echo ""
 echo "------------------------------------------------------"
 echo "Creating AKS Cluster: $CLUSTER_NAME"
 echo "------------------------------------------------------"
-eksctl create cluster --name=$CLUSTER_NAME --node-type=m5.2xlarge --nodes=1 --region=$CLUSTER_REGION
-eksctl utils update-coredns --name=$CLUSTER_NAME --region=$CLUSTER_REGION
+eksctl create cluster --version=1.17 --name=$CLUSTER_NAME --node-type=m5.2xlarge --nodes=1 --region=$CLUSTER_REGION
 
 echo "------------------------------------------------------"
 echo "Getting Cluster Credentials"
