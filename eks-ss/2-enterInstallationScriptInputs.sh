@@ -32,7 +32,7 @@ echo "Dynatrace Host Name"
 read -p "  (e.g. abc12345.live.dynatrace.com)   (current: $DT_HOSTNAME) : " DT_HOSTNAME_NEW
 read -p "Dynatrace API Token                    (current: $DT_API_TOKEN) : " DT_API_TOKEN_NEW
 read -p "Dynatrace PaaS Token                   (current: $DT_PAAS_TOKEN) : " DT_PAAS_TOKEN_NEW
-read -p "PaaS Resource Prefix (e.g. lastname)   (current: $RESOURCE_PREFIX) : " RESOURCE_PREFIX_NEW
+read -p "Resource Prefix (e.g. lastname)        (current: $RESOURCE_PREFIX) : " RESOURCE_PREFIX_NEW
 
 case $DEPLOYMENT in
   eks)
@@ -46,13 +46,14 @@ DT_HOSTNAME=${DT_HOSTNAME_NEW:-$DT_HOSTNAME}
 DT_API_TOKEN=${DT_API_TOKEN_NEW:-$DT_API_TOKEN}
 DT_PAAS_TOKEN=${DT_PAAS_TOKEN_NEW:-$DT_PAAS_TOKEN}
 CLUSTER_REGION=${CLUSTER_REGION_NEW:-$CLUSTER_REGION}
+RESOURCE_PREFIX=${RESOURCE_PREFIX_NEW:-$RESOURCE_PREFIX}
 
 echo -e "Please confirm all are correct:"
 echo ""
 echo "Dynatrace Host Name          : $DT_HOSTNAME"
 echo "Dynatrace API Token          : $DT_API_TOKEN"
 echo "Dynatrace PaaS Token         : $DT_PAAS_TOKEN"
-echo "PaaS Resource Prefix         : $RESOURCE_PREFIX"
+echo "Resource Prefix              : $RESOURCE_PREFIX"
 
 case $DEPLOYMENT in
   eks)
