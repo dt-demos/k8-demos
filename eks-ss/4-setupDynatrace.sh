@@ -12,10 +12,11 @@ then
   exit 1
 fi
 
-echo " "
+echo ""
 echo "===================================================="
 echo "About to setup Dynatrace"
 read -rsp $'Press ctrl-c to abort. Press any key to continue...\n====================================================' -n1 key
+echo ""
 
 START_TIME=$(date)
 
@@ -25,9 +26,9 @@ START_TIME=$(date)
 # add Dynatrace Tagging rules
 #./applyAutoTaggingRules.sh
 
-echo "----------------------------------------------------"
-echo "Letting Dynatrace tagging rules be applied [150 seconds] ..."
-sleep 150
+#echo "----------------------------------------------------"
+#echo "Letting Dynatrace tagging rules be applied [150 seconds]"
+#sleep 150
 
 echo "===================================================="
 echo "Finished setting up Dynatrace "

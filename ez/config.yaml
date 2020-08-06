@@ -1,5 +1,4 @@
----
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
@@ -11,12 +10,16 @@ metadata:
   name: easytravel-mongodb
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: easytravel-mongodb
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
         io.kompose.service: easytravel-mongodb
+        app: easytravel-mongodb
     spec:
       containers:
       - image: dynatrace/easytravel-mongodb:latest
@@ -52,7 +55,7 @@ spec:
 status:
   loadBalancer: {}
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
@@ -64,12 +67,16 @@ metadata:
   name: easytravel-backend
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: easytravel-backend
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
         io.kompose.service: easytravel-backend
+        app: easytravel-backend
     spec:
       containers:
       - env:
@@ -132,7 +139,7 @@ spec:
 status:
   loadBalancer: {}
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
@@ -144,12 +151,16 @@ metadata:
   name: easytravel-frontend
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: easytravel-frontend
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
         io.kompose.service: easytravel-frontend
+        app: easytravel-frontend
     spec:
       containers:
       - env:
@@ -198,11 +209,11 @@ metadata:
 spec:
   ports:
   - name: "8080"
-    port: 8080
+    port: 8081
     targetPort: 8080
     nodePort: 30683
   selector:
     io.kompose.service: easytravel-frontend
-  type: NodePort
+  type: LoadBalancer
 status:
   loadBalancer: {}
