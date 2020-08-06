@@ -9,17 +9,10 @@ CREDS=./creds.json
 
 if [ -f "$CREDS" ]
 then
-    DEPLOYMENT=$(cat creds.json | jq -r '.deployment | select (.!=null)')
-    if [ -n $DEPLOYMENT ]
-    then 
-      DEPLOYMENT=$1
-    fi
     DT_HOSTNAME=$(cat creds.json | jq -r '.dynatraceHostName')
     DT_API_TOKEN=$(cat creds.json | jq -r '.dynatraceApiToken')
     DT_PAAS_TOKEN=$(cat creds.json | jq -r '.dynatracePaaSToken')
-
     RESOURCE_PREFIX=$(cat creds.json | jq -r '.resourcePrefix')
-
     CLUSTER_REGION=$(cat creds.json | jq -r '.clusterRegion')
 fi
 
@@ -36,7 +29,7 @@ read -p "Resource Prefix (e.g. lastname)        (current: $RESOURCE_PREFIX) : " 
 
 case $DEPLOYMENT in
   eks)
-    read -p "Cluster Region (eg.us-east-1)          (current: $CLUSTER_REGION) : " CLUSTER_REGION_NEW
+    read -p "Cluster Region (e.g. us-east-1)        (current: $CLUSTER_REGION) : " CLUSTER_REGION_NEW
     ;;
 esac
 echo "==================================================================="
