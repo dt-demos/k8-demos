@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: loadgen
+  name: easytravel-loadgen
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: loadgen
+      app: easytravel-loadgen
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: loadgen
+        app: easytravel-loadgen
     spec:
       containers:
       - env:
@@ -24,7 +24,23 @@ spec:
           value: BadCacheSynchronization,CPULoad,DatabaseCleanup,DatabaseSlowdown,FetchSizeTooSmall,JourneySearchError404,JourneySearchError500,LoginProblems,MobileErrors,TravellersOptionBox
         image: dynatrace/easytravel-loadgen:latest
         imagePullPolicy: Always
-        name: loadgen
+        name: easytravel-loadgen
         resources: {}
       restartPolicy: Always
 status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: easytravel-loadgen-rest
+  namespace: easytravel
+spec:
+  ports:
+  - name: "8091"
+    port: 8091
+    targetPort: 8091
+  selector:
+    app: easytravel-loadgen
+  type: LoadBalancer
+status:
+  loadBalancer: {}

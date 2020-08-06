@@ -1,8 +1,13 @@
-apiVersion: apps/v1
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: easytravel
+---
+  apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   name: easytravel-mongodb
+  namespace: easytravel
 spec:
   replicas: 1
   selector:
@@ -30,6 +35,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: easytravel-mongodb
+  namespace: easytravel
 spec:
   ports:
   - name: "27017"
@@ -47,6 +53,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: easytravel-backend
+  namespace: easytravel
 spec:
   replicas: 1
   selector:
@@ -109,6 +116,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: easytravel-backend
+  namespace: easytravel
 spec:
   ports:
   - name: "8080"
@@ -125,6 +133,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: easytravel-frontend
+  namespace: easytravel
 spec:
   replicas: 1
   selector:
@@ -175,12 +184,12 @@ apiVersion: v1
 kind: Service
 metadata:
   name: easytravel-frontend
+  namespace: easytravel
 spec:
   ports:
   - name: "8080"
     port: 8080
     targetPort: 8080
-    nodePort: 30683
   selector:
     app: easytravel-frontend
   type: LoadBalancer
