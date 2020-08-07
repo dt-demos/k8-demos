@@ -34,6 +34,17 @@ case $DEPLOYMENT in
 esac
 echo "==================================================================="
 echo ""
+
+if [[ ${DT_HOSTNAME_NEW:0:8} == "https://" ]]; then
+  echo "Remving http:// from Dynatrace Host Name"
+  DT_HOSTNAME_NEW="${DT_HOSTNAME_NEW:7:200}"
+fi
+
+if [[ "${DT_HOSTNAME_NEW: -1}" == "/" ]]; then
+  echo "Remving trailing / from Dynatrace Host Name"
+  DT_HOSTNAME_NEW="${DT_HOSTNAME_NEW%?}"
+fi
+
 # set value to new input or default to current value
 DT_HOSTNAME=${DT_HOSTNAME_NEW:-$DT_HOSTNAME}
 DT_API_TOKEN=${DT_API_TOKEN_NEW:-$DT_API_TOKEN}
