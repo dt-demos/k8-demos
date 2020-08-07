@@ -41,6 +41,12 @@ if ! [ -x "$(command -v yq)" ]; then
   sudo apt install yq -y
 fi
 
+# Installation of unzip
+if ! [ -x "$(command -v unzip)" ]; then
+  sudo apt update
+  sudo apt install unzip -y
+fi
+
 case $DEPLOYMENT in
   eks)
     # AWS CLI
@@ -95,16 +101,12 @@ case $DEPLOYMENT in
     echo ""
     echo "****************************************************"
     echo "****************************************************"
-    echo "If you have not done so already, run this command"
-    echo "to configure the aws cli"
-    echo ""
-    echo "aws configure"
-    echo "  enter your AWS Access Key ID"
-    echo "  enter your AWS Secret Access Key ID"
-    echo "  enter Default region name example us-east-1"
-    echo "  Default output format, enter json"
+    echo "Now verify your AWS CLI and set these fields as follows:"
+    echo "  Default region name: [Use the same on you entered earlier, example us-west-2]"
+    echo "  Default output format: [enter json]"
     echo "****************************************************"
     echo "****************************************************"
+    aws configure
     ;;
 esac
 
