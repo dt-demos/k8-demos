@@ -24,5 +24,3 @@ echo "------------------------------------------------------"
 echo "Getting Cluster Credentials"
 echo "------------------------------------------------------"
 eksctl utils write-kubeconfig --cluster=$CLUSTER_NAME --region=$CLUSTER_REGION --set-kubeconfig-context
-
-aws eks update-kubeconfig --name $CLUSTER_NAME --region $CLUSTER_REGION
