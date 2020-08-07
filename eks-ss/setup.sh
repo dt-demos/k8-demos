@@ -20,6 +20,7 @@ echo "4)  Install Dynatrace OneAgent Operator"
 echo "----------------------------------------------------"
 echo "10) Validate Kubectl"
 echo "11) Validate Prerequisite Tools"
+echo "12) Show Dynatrace pods"
 echo "----------------------------------------------------"
 echo "99) Delete Kubernetes cluster"
 echo "===================================================="
@@ -57,6 +58,10 @@ while [ opt != "" ]
                 ;;
         11)
                 ./validatePrerequisiteTools.sh $DEPLOYMENT 2>&1 | tee logs/validatePrerequisiteTools.log
+                show_menu
+                ;;
+        12)
+                ./showDynatrace.sh  2>&1 | tee logs/showDynatrace.log
                 show_menu
                 ;;
         99)
