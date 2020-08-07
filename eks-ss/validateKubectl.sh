@@ -1,7 +1,8 @@
 #!/bin/bash
 
 echo "----------------------------------------------------"
-echo Validating Kubectl configured to cluster
+echo "Validating Kubectl configured to cluster"
+echo "By running 'kubectl -n kube-system get pods'"
 echo "----------------------------------------------------"
 export KUBECTL_CONFIG=$(kubectl -n kube-system get pods | grep Running | wc -l | tr -d '[:space:]')
 if [ $KUBECTL_CONFIG -eq 0 ]
